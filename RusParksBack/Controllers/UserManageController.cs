@@ -7,8 +7,7 @@ namespace RusParksBack.Controllers;
 public class UserManageController :Controller
 {
     private readonly IUserManage _userManage;
-
-
+    
     public UserManageController(IUserManage userManage)
     {
         _userManage = userManage;

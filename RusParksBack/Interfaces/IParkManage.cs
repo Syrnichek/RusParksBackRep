@@ -4,7 +4,9 @@ namespace RusParksBack.Interfaces;
 
 public interface IParkManage
 {
-    public ParksModel GetParksAll();
+    public List<ParksModel> GetParksAll();
 
-    public ParksModel GetParksByType(int type);
+    public List<ParksModel> GetParksByType(int type);
+
+    public IQueryable<ParksModel> GetParksById(int parkid);
 }
