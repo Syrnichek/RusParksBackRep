@@ -29,11 +29,11 @@ namespace RusParksBack.Services
             {
                 IQueryable<ParksModel> parksIQueryable = applicationContext.parks;
                 var parks = parksIQueryable.Where(p => p.typeid.Contains(type)).ToList();
-                return parks;
+                return parks.ToList();
             }
         }
 
-        public IQueryable<ParksModel> GetParksById(int parkid)
+        public List<ParksModel> GetParksById(int parkid)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
  
@@ -43,7 +43,21 @@ namespace RusParksBack.Services
             {
                 IQueryable<ParksModel> parksIQueryable = applicationContext.parks;
                 var park = parksIQueryable.Where(p => p.parkid == parkid);
-                return park;
+                return park.ToList();
+            }
+        }
+
+        public List<LandmarksModel> GetLandmarksByPark(int parkid)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+ 
+            var options = optionsBuilder.Options;
+
+            using (ApplicationContext applicationContext = new ApplicationContext(options))
+            {
+                IQueryable<LandmarksModel> landmarksIQueryable = applicationContext.landmarks;
+                var landmarks = landmarksIQueryable.Where(l => l.parkid == parkid);
+                return landmarks.ToList();
             }
         }
     }

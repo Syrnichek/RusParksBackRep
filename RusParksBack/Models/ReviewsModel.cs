@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace RusParksBack.Models;
 
 public class ReviewsModel
 {
-    public int revieiwid { get; set; }
+    [Key]
+    public int reviewid { get; set; }
     
     public int parkid { get; set; }
     

@@ -9,13 +9,13 @@ public class ApplicationContext :DbContext
 
     public DbSet<ParksModel> parks { get; set; } = null!;
 
+    public DbSet<LandmarksModel> landmarks { get; set; } = null!;
+
+    public DbSet<ReviewsModel> reviews { get; set; } = null!;
+    
     /*public DbSet<RolesModel> roles { get; set; }
     
-    public DbSet<ReviewsModel> reviews { get; set; }
-    
     public DbSet<NewsModel> news { get; set; }
-    
-    public DbSet<LandmarksModel> landmarks { get; set; }
     */
     
     public ApplicationContext(DbContextOptions<ApplicationContext> options)

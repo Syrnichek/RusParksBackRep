@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUserManage, UserManage>();
 builder.Services.AddScoped<IParkManage, ParkManage>();
+builder.Services.AddScoped<IReviewManage, ReviewManage>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -42,6 +43,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors(builder => builder.AllowAnyOrigin());
 app.UseAuthorization();
 app.UseAuthentication();
 

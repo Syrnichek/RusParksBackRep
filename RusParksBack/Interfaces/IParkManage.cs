@@ -8,5 +8,7 @@ public interface IParkManage
 
     public List<ParksModel> GetParksByType(int type);
 
-    public IQueryable<ParksModel> GetParksById(int parkid);
+    public List<ParksModel> GetParksById(int parkid);
+
+    public List<LandmarksModel> GetLandmarksByPark(int parkid);
 }

@@ -41,12 +41,10 @@ public class UserManage :IUserManage
         {
             UsersModel? user = applicationContext.users.FirstOrDefault(u => u.login == Login && u.password == Password);
             
-            // если пользователь не найден, отправляем статусный код 401
             if (user is null) return Results.Unauthorized();
 
             var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.login) };
             
-            // создаем JWT-токен
             var jwt = new JwtSecurityToken(
                 issuer: AuthOptions.ISSUER,
                 audience: AuthOptions.AUDIENCE,
@@ -56,7 +54,6 @@ public class UserManage :IUserManage
                     SecurityAlgorithms.HmacSha256));
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-            // формируем ответ
             var response = new
             {
                 access_token = encodedJwt,

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using RusParksBack.Interfaces;
 using RusParksBack.Models;
@@ -29,9 +30,16 @@ namespace RusParksBack.Controllers
         
         [HttpGet]
         [Route("api/parkManage/GetParksById")]
-        public IQueryable<ParksModel> GetParksById(int id)
+        public List<ParksModel> GetParksById(int id)
         {
             return _parkManage.GetParksById(id);
+        }
+        
+        [HttpGet]
+        [Route("api/parkManage/GetLandmarksByPark")]
+        public List<LandmarksModel> GetLandmarksByPark(int id)
+        {
+            return _parkManage.GetLandmarksByPark(id);
         }
     }
 }
