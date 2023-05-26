@@ -6,18 +6,18 @@ namespace RusParksBack.Controllers;
 
 public class UserManageController :Controller
 {
-    private readonly IUserManage _userManage;
+    private readonly IUserManageService _userManageService;
     
-    public UserManageController(IUserManage userManage)
+    public UserManageController(IUserManageService userManageService)
     {
-        _userManage = userManage;
+        _userManageService = userManageService;
     }
     
     [HttpGet]
     [Route("api/userManage/UserLogin")]
     public IResult UserLogin(string login, string password)
     {
-        return _userManage.UserLogin(login, password);
+        return _userManageService.UserLogin(login, password);
     }
     
     [HttpGet]
@@ -26,7 +26,7 @@ public class UserManageController :Controller
     {
         try
         {
-            _userManage.UserReg(email, login, password);
+            _userManageService.UserReg(email, login, password);
             return Ok();
         }
         catch (UserAlreadyExistsException ex)

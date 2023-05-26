@@ -8,7 +8,7 @@ using RusParksBack.Models;
 
 namespace RusParksBack.Services;
 
-public class UserManage :IUserManage
+public class UserManageService :IUserManageService
 {
     public void UserReg(string Email, string Login, string Password)
     {

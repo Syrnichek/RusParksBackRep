@@ -13,9 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IUserManage, UserManage>();
-builder.Services.AddScoped<IParkManage, ParkManage>();
-builder.Services.AddScoped<IReviewManage, ReviewManage>();
+builder.Services.AddScoped<IUserManageService, UserManageService>();
+builder.Services.AddScoped<IParkManageService, ParkManageService>();
+builder.Services.AddScoped<IReviewManageService, ReviewManageService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

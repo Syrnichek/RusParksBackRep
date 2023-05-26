@@ -4,7 +4,7 @@ using RusParksBack.Models;
 
 namespace RusParksBack.Services
 {
-    public class ParkManage :IParkManage
+    public class ParkManageService :IParkManageService
     {
         public List<ParksModel> GetParksAll()
         {

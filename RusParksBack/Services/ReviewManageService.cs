@@ -4,7 +4,7 @@ using RusParksBack.Models;
 
 namespace RusParksBack.Services
 {
-    public class ReviewManage : IReviewManage
+    public class ReviewManageService : IReviewManageService
     {
         public void ReviewAdd(int parkid, int userid, int reviewscore, string reviewtext)
         {

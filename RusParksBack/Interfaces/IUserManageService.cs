@@ -1,6 +1,6 @@
 namespace RusParksBack.Interfaces;
 
-public interface IUserManage
+public interface IUserManageService
 {
     public void UserReg(string email, string login, string password);
 

@@ -2,7 +2,7 @@ using RusParksBack.Models;
 
 namespace RusParksBack.Interfaces;
 
-public interface IParkManage
+public interface IParkManageService
 {
     public List<ParksModel> GetParksAll();
 
