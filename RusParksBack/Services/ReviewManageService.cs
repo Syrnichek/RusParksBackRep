@@ -47,6 +47,21 @@ namespace RusParksBack.Services
             }
         }
 
+        public double ReviewsGetAverage(int parkid)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+ 
+            var options = optionsBuilder.Options;
+
+            using (ApplicationContext applicationContext = new ApplicationContext(options))
+            {
+                IQueryable<ReviewsModel> reviewsIEnumerable = applicationContext.reviews;
+                var averageReview = reviewsIEnumerable.Where(r => r.parkid == parkid).Average(a => a.reviewscore);
+                return averageReview;
+            }
+        }
+
+
         public void ReviewDelete(int reviewid)
         {
             throw new NotImplementedException();
