@@ -18,7 +18,7 @@ public class UserManageService :IUserManageService
 
         using (ApplicationContext applicationContext = new ApplicationContext(options))
         {
-            if (applicationContext.users.FirstOrDefault(u => u.email == Email) != null)
+            if (applicationContext.users.FirstOrDefault(u => u.email == Email && u.login == Login) != null)
             {
                 throw new UserAlreadyExistsException("User already exists");
             }

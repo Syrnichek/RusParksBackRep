@@ -33,5 +33,12 @@ namespace RusParksBack.Controllers
         {
             return _reviewManageService.ReviewsGetByParkId(parkid);
         }
+        
+        [HttpGet]
+        [Route("api/reviewManage/ReviewsGetAverage")]
+        public double ReviewsGetAverage(int parkid)
+        {
+            return _reviewManageService.ReviewsGetAverage(parkid);
+        }
     }
 }
