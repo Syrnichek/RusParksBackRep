@@ -13,5 +13,5 @@ public class UsersModel
     
     public string password { get; set; }
 
-    public int roleid { get; set; }
+    public string role { get; set; }
 }

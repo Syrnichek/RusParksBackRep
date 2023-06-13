@@ -43,13 +43,16 @@ public class UserManageService :IUserManageService
             
             if (user is null) return Results.Unauthorized();
 
-            var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.login) };
+            var claims = new List<Claim>();
+            
+            claims.Add(new Claim(ClaimTypes.Name, user.login));
+            claims.Add(new Claim(ClaimTypes.Role, user.role));
             
             var jwt = new JwtSecurityToken(
                 issuer: AuthOptions.ISSUER,
                 audience: AuthOptions.AUDIENCE,
                 claims: claims,
-                expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(10)),
+                expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(60)),
                 signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(),
                     SecurityAlgorithms.HmacSha256));
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);

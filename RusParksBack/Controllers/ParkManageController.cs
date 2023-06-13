@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RusParksBack.Interfaces;
 using RusParksBack.Models;
 
 namespace RusParksBack.Controllers
 {
+    [Authorize(Roles = "User")]
     public class ParkManageController :Controller
     {
         private readonly IParkManageService _parkManageService;
