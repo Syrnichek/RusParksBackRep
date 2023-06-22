@@ -5,7 +5,6 @@ using RusParksBack.Models;
 
 namespace RusParksBack.Controllers
 {
-    [Authorize(Roles = "User")]
     public class ParkManageController :Controller
     {
         private readonly IParkManageService _parkManageService;
@@ -31,16 +30,16 @@ namespace RusParksBack.Controllers
         
         [HttpGet]
         [Route("api/parkManage/GetParksById")]
-        public List<ParksModel> GetParksById(int id)
+        public List<ParksModel> GetParksById(int parkId)
         {
-            return _parkManageService.GetParksById(id);
+            return _parkManageService.GetParksById(parkId);
         }
         
         [HttpGet]
         [Route("api/parkManage/GetLandmarksByPark")]
-        public List<LandmarksModel> GetLandmarksByPark(int id)
+        public List<LandmarksModel> GetLandmarksByPark(int parkId)
         {
-            return _parkManageService.GetLandmarksByPark(id);
+            return _parkManageService.GetLandmarksByPark(parkId);
         }
     }
 }

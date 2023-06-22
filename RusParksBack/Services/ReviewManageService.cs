@@ -60,11 +60,5 @@ namespace RusParksBack.Services
                 return averageReview;
             }
         }
-
-
-        public void ReviewDelete(int reviewid)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

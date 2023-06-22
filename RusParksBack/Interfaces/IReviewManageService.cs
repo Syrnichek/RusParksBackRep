@@ -11,7 +11,5 @@ namespace RusParksBack.Interfaces
         public List<ReviewsModel> ReviewsGetByParkId(int parkid);
 
         public double ReviewsGetAverage(int parkid);
-
-        public void ReviewDelete(int reviewid);
     }
 }
