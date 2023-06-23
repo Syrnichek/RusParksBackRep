@@ -6,6 +6,6 @@ namespace RusParksBack.Interfaces
 
         public void ParkAdd(string parkname, string parkcity, string parkmetro, string[] mainimages, string maintext, string enterinfotext);
 
-        public void NewsAdd();
+        public void NewsAdd(string newstitle, string newsimage, string newstext);
     }
 }
