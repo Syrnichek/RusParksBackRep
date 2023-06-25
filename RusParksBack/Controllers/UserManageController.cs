@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RusParksBack.Exceptions;
 using RusParksBack.Interfaces;
@@ -32,7 +31,21 @@ public class UserManageController :Controller
         }
         catch (UserAlreadyExistsException ex)
         {
-            return StatusCode(420, "Пользователь уже существует");
+            return StatusCode(425, "Пользователь уже существует");
+        }
+    }
+    
+    [HttpGet]
+    [Route("api/userManage/RoleGet")]
+    public IActionResult RoleGet(int userId)
+    {
+        try
+        {
+            return Ok(_userManageService.RoleGet(userId));
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(426, "Ошибка при получении роли");
         }
     }
 }

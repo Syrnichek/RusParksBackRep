@@ -1,5 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using RusParksBack.Exceptions;
@@ -64,6 +66,25 @@ public class UserManageService :IUserManageService
             };
 
             return Results.Json(response);
+        }
+    }
+
+    public string RoleGet(int userId)
+    {
+        var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
+ 
+        var options = optionsBuilder.Options;
+
+        using (ApplicationContext applicationContext = new ApplicationContext(options))
+        {
+            var user = applicationContext.users.FirstOrDefault(u => u.userid == userId);
+
+            if (user == null)
+            {
+                throw new UserAlreadyExistsException("User not exists");
+            }
+
+            return user.role;
         }
     }
 }

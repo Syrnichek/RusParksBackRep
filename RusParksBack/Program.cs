@@ -16,6 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserManageService, UserManageService>();
 builder.Services.AddScoped<IParkManageService, ParkManageService>();
 builder.Services.AddScoped<INewsManageService, NewsManageService>();
+builder.Services.AddScoped<IAdminManageService, AdminManageService>();
 builder.Services.AddScoped<IReviewManageService, ReviewManageService>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

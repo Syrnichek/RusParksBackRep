@@ -14,9 +14,7 @@ public class ApplicationContext :DbContext
     public DbSet<ReviewsModel> reviews { get; set; } = null!;
     
     public DbSet<NewsModel> news { get; set; } = null!;
-    
-    //public DbSet<RolesModel> roles { get; set; }
-    
+
     public ApplicationContext(DbContextOptions<ApplicationContext> options)
         : base(options)
     { 
