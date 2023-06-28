@@ -19,20 +19,6 @@ namespace RusParksBack.Services
             }
         }
 
-        public List<ParksModel> GetParksByType(int type)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
- 
-            var options = optionsBuilder.Options;
-
-            using (ApplicationContext applicationContext = new ApplicationContext(options))
-            {
-                IQueryable<ParksModel> parksIQueryable = applicationContext.parks;
-                var parks = parksIQueryable.Where(p => p.typeid.Contains(type)).ToList();
-                return parks.ToList();
-            }
-        }
-
         public List<ParksModel> GetParksById(int parkid)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();

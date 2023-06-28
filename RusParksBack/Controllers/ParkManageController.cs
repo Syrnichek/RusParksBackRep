@@ -20,14 +20,7 @@ namespace RusParksBack.Controllers
         {
             return _parkManageService.GetParksAll();
         }
-    
-        [HttpGet]
-        [Route("api/parkManage/GetParksByType")]
-        public List<ParksModel> GetParksByType(int type)
-        {
-            return _parkManageService.GetParksByType(type);
-        }
-        
+
         [HttpGet]
         [Route("api/parkManage/GetParksById")]
         public List<ParksModel> GetParksById(int parkId)
