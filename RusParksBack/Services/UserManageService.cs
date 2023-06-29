@@ -1,9 +1,4 @@
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using RusParksBack.Exceptions;
 using RusParksBack.Interfaces;
 using RusParksBack.Models;
@@ -25,7 +20,7 @@ public class UserManageService :IUserManageService
                 throw new UserAlreadyExistsException("User already exists");
             }
 
-            UsersModel user = new UsersModel {email = Email, login = Login, password = Password};
+            UsersModel user = new UsersModel {email = Email, login = Login, password = Password, role = "User"};
             applicationContext.users.Add(user);
             applicationContext.SaveChanges();
         }
@@ -33,8 +28,6 @@ public class UserManageService :IUserManageService
 
     public IResult UserLogin(string Login, string Password)
     {
-        AuthOptions authOptions = new AuthOptions();
-        
         var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
  
         var options = optionsBuilder.Options;
@@ -45,27 +38,7 @@ public class UserManageService :IUserManageService
             
             if (user is null) return Results.Unauthorized();
 
-            var claims = new List<Claim>();
-            
-            claims.Add(new Claim(ClaimTypes.Name, user.login));
-            claims.Add(new Claim(ClaimTypes.Role, user.role));
-            
-            var jwt = new JwtSecurityToken(
-                issuer: AuthOptions.ISSUER,
-                audience: AuthOptions.AUDIENCE,
-                claims: claims,
-                expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(60)),
-                signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(),
-                    SecurityAlgorithms.HmacSha256));
-            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-
-            var response = new
-            {
-                access_token = encodedJwt,
-                username = user.login
-            };
-
-            return Results.Json(response);
+            return Results.Json(user.userid);
         }
     }
 
