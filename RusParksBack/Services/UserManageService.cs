@@ -38,7 +38,13 @@ public class UserManageService :IUserManageService
             
             if (user is null) return Results.Unauthorized();
 
-            return Results.Json(user.userid);
+            var response = new
+            {
+                userId = user.userid,
+                userLogin = user.login
+            };
+            
+            return Results.Json(response);
         }
     }
 
