@@ -19,7 +19,7 @@ public class UserManageService :IUserManageService
             {
                 throw new UserAlreadyExistsException("User already exists");
             }
-
+            
             UsersModel user = new UsersModel {email = Email, login = Login, password = Password, role = "User"};
             applicationContext.users.Add(user);
             applicationContext.SaveChanges();

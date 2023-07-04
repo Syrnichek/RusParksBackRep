@@ -33,6 +33,10 @@ public class UserManageController :Controller
         {
             return StatusCode(425, "Пользователь уже существует");
         }
+        catch (Exception ex)
+        {
+            return StatusCode(400, "Введите корректное значение");
+        }
     }
     
     [HttpGet]
