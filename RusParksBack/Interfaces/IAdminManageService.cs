@@ -4,8 +4,9 @@ namespace RusParksBack.Interfaces
     {
         public void ReviewDelete(int reviewid);
 
-        public void ParkAdd(string parkname, string parkcity, string parkmetro, string[] mainimages, string maintext, string enterinfotext, int[] typeid);
+        public void ParkAdd(string parkname, string parkcity, string parkmetro, IFormFile[] mainimages,
+            string[] imagepath, string maintext, string enterinfotext, int[] typeid);
 
-        public void NewsAdd(string newstitle, string newsimage, string newstext);
+        public void NewsAdd(string newstitle, string newsimage, IFormFile[] newsImage, string newstext);
     }
 }

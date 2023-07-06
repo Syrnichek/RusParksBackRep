@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using RusParksBack.Interfaces;
 using RusParksBack.Services;
 
@@ -15,6 +16,7 @@ builder.Services.AddScoped<IParkManageService, ParkManageService>();
 builder.Services.AddScoped<INewsManageService, NewsManageService>();
 builder.Services.AddScoped<IAdminManageService, AdminManageService>();
 builder.Services.AddScoped<IReviewManageService, ReviewManageService>();
+builder.Services.AddDirectoryBrowser();
 
 var app = builder.Build();
 
@@ -24,6 +26,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseFileServer(new FileServerOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "StaticFiles")),
+    RequestPath = "/StaticFiles",
+    EnableDirectoryBrowsing = true
+});
 
 app.UseHttpsRedirection();
 

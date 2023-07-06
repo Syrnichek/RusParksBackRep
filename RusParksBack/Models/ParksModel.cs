@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
 namespace RusParksBack.Models;
@@ -11,14 +12,17 @@ public class ParksModel
     public string parkname { get; set; }
     
     public string parkcity { get; set; }
+    
     [MaybeNull]
     public string parkmetro { get; set; }
+    
     [MaybeNull]
     public string smallimage { get; set; }
+
     [MaybeNull]
-    public string[] mainimages { get; set; }
-    
+    public string[] imagespath { get; set; }
     public string maintext { get; set; }
+    
     [MaybeNull]
     public string enterinfotext { get; set; }
     

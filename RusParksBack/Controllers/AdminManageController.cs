@@ -29,46 +29,35 @@ namespace RusParksBack.Controllers
         
         [HttpPost]
         [Route("api/adminManage/ParkAdd")]
-        public IActionResult ParkAdd(string parkname, string parkcity, string parkmetro, string[] mainimages, string maintext, string enterinfotext, int[] typeid)
+        public IActionResult ParkAdd(string parkname, string parkcity, string parkmetro, IFormFile [] mainimages, string[] imagespath, string maintext, string enterinfotext, int[] typeid)
         {
-            try
-            {
                 _adminManageService.ParkAdd
                     (
                     parkname,
                     parkcity, 
                     parkmetro, 
-                    mainimages, 
-                    maintext, 
+                    mainimages,
+                    imagespath,
+                    maintext,
                     enterinfotext,
                     typeid
                     );
                 return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(421, "Ошибка при добавлении парка");
-            }
         }
         
         [HttpPost]
         [Route("api/adminManage/NewsAdd")]
-        public IActionResult NewsAdd(string newstitle, string newsimage, string newstext)
+        public IActionResult NewsAdd(string newstitle, string newsimagepath, IFormFile[] newsimage, string newstext)
         {
-            try
-            {
                 _adminManageService.NewsAdd
                 (
                     newstitle,
-                    newsimage, 
+                    newsimagepath, 
+                    newsimage,
                     newstext
                 );
                 return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(422, "Ошибка при добавлении парка");
-            }
+            
         }
     }
 }
