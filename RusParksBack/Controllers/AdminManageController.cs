@@ -27,9 +27,9 @@ namespace RusParksBack.Controllers
             }
         }
         
-        [HttpGet]
+        [HttpPost]
         [Route("api/adminManage/ParkAdd")]
-        public IActionResult ParkAdd(string parkname, string parkcity, string parkmetro, string[] mainimages, string maintext, string enterinfotext)
+        public IActionResult ParkAdd(string parkname, string parkcity, string parkmetro, string[] mainimages, string maintext, string enterinfotext, int[] typeid)
         {
             try
             {
@@ -40,7 +40,8 @@ namespace RusParksBack.Controllers
                     parkmetro, 
                     mainimages, 
                     maintext, 
-                    enterinfotext
+                    enterinfotext,
+                    typeid
                     );
                 return Ok();
             }
@@ -50,7 +51,7 @@ namespace RusParksBack.Controllers
             }
         }
         
-        [HttpGet]
+        [HttpPost]
         [Route("api/adminManage/NewsAdd")]
         public IActionResult NewsAdd(string newstitle, string newsimage, string newstext)
         {

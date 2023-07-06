@@ -23,7 +23,7 @@ namespace RusParksBack.Services
             }
         }
 
-        public void ParkAdd(string parkName, string parkCity, string parkMetro, string[] mainImages, string mainText, string enterInfoText)
+        public void ParkAdd(string parkName, string parkCity, string parkMetro, string[] mainImages, string mainText, string enterInfoText, int[] typeid)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
  
@@ -38,7 +38,8 @@ namespace RusParksBack.Services
                     parkmetro = parkMetro, 
                     mainimages = mainImages, 
                     maintext = mainText, 
-                    enterinfotext = enterInfoText
+                    enterinfotext = enterInfoText,
+                    typeid = typeid
                 };
 
                 applicationContext.parks.Add(park);

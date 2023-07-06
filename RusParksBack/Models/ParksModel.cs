@@ -13,9 +13,9 @@ public class ParksModel
     public string parkcity { get; set; }
     [MaybeNull]
     public string parkmetro { get; set; }
-    
+    [MaybeNull]
     public string smallimage { get; set; }
-    
+    [MaybeNull]
     public string[] mainimages { get; set; }
     
     public string maintext { get; set; }

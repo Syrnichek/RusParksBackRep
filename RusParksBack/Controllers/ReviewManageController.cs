@@ -15,9 +15,9 @@ namespace RusParksBack.Controllers
 
         [HttpGet]
         [Route("api/reviewManage/ReviewAdd")]
-        public void ReviewAdd(int parkid, int userid, int reviewscore, string reviewtext)
+        public void ReviewAdd(int parkId, int userId, int reviewScore, string reviewText, string userLogin)
         {
-            _reviewManageService.ReviewAdd(parkid, userid, reviewscore, reviewtext);
+            _reviewManageService.ReviewAdd(parkId, userId, reviewScore, reviewText, userLogin);
         }
         
         [HttpGet]
@@ -29,16 +29,16 @@ namespace RusParksBack.Controllers
         
         [HttpGet]
         [Route("api/reviewManage/ReviewsGetByParkId")]
-        public List<ReviewsModel> ReviewsGetByParkId(int parkid)
+        public List<ReviewsModel> ReviewsGetByParkId(int parkId)
         {
-            return _reviewManageService.ReviewsGetByParkId(parkid);
+            return _reviewManageService.ReviewsGetByParkId(parkId);
         }
         
         [HttpGet]
         [Route("api/reviewManage/ReviewsGetAverage")]
-        public double ReviewsGetAverage(int parkid)
+        public double ReviewsGetAverage(int parkId)
         {
-            return _reviewManageService.ReviewsGetAverage(parkid);
+            return _reviewManageService.ReviewsGetAverage(parkId);
         }
     }
 }
